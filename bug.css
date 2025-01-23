@@ -1,0 +1,27 @@
+The CSS property `calc()` is used to perform calculations on values. However, there's a common error: using `calc()` with percentages in a way that CSS doesn't expect.  For example, consider:
+
+```css
+.box {
+  width: calc(50% + 20px);
+}
+```
+This works fine. But attempting to use a percentage based on a calculation is problematic: 
+
+```css
+.box {
+  width: calc(50% + 20% );
+}
+/* INCORRECT */
+.box {
+  width: calc( (100% - 50%) / 2);
+}
+/* INCORRECT */
+```
+The second example attempts to calculate 50% of the containing element, but the second half of the equation is not a fixed width value. It results in `NaN` (Not a Number).
+
+Another error related to `calc()` involves whitespace. Always ensure there are no spaces between the operators and the values in the `calc()` expression. Incorrect spacing leads to incorrect calculations.
+
+```css
+/*INCORRECT SPACING */
+.box { width: calc( 50% + 20px ); }
+```
