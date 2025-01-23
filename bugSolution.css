@@ -1,0 +1,18 @@
+The solution involves understanding the proper use of `calc()` and paying close attention to spacing and the values used. For percentage-based calculations, ensure the percentage is relative to something concrete (e.g., the parent's width). For spacing, remove all unnecessary space around operators.
+
+```css
+/*CORRECTED */
+.box {
+  width: calc(50% + 20px);
+}
+
+/*CORRECTED */
+.box {
+  width: 50%; /* OR a fixed width for the second part */
+}
+/*CORRECTED */
+.box { width: calc((100%-50%)/2); }
+/*CORRECTED */
+.box { width: calc(50%+20px); }
+```
+Make sure there is no extra space around the + and - operators in the `calc()` function.
